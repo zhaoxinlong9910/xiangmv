@@ -1,0 +1,86 @@
+-- 产品分类表
+create table cptype(
+	cpid int auto_increment primary key,
+	cpName VARCHAR(50) not null 
+)
+INSERT INTO cptype(cpName)
+VALUES('椅子系列'),('餐桌系列'),('沙发系列'), ('创意系列')
+-- 产品信息表
+create table cpxinxi(
+cpxinghao varchar(30) PRIMARY KEY,
+cpmingcheng VARCHAR(20)NOT NULL,
+cpcaizhi VARCHAR(20)NOT NULL,
+cpshoujia  int not null ,
+cpshichangjia int not null,
+cppinpai VARCHAR(20)NOT NULL,
+sfzuzhuang boolean,
+sfkedingzhi boolean,
+cpyanse VARCHAR(20)NOT NULL,
+cpshejiyuansu VARCHAR(20)NOT NULL,
+cpfengge VARCHAR(20)NOT NULL,
+cpkuanshi VARCHAR(20)NOT NULL,
+cid INT NOT NULL,
+FOREIGN KEY(cid) REFERENCES cptype(cpid)
+) 
+INSERT INTO cpxinxi(cpxinghao,cpmingcheng,cpcaizhi,cpshoujia,cpshichangjia,cppinpai,sfzuzhuang,sfkedingzhi,cpyanse,cpshejiyuansu,cpfengge,cpkuanshi,cid) 
+VALUES('00001', '软皮椅', '真皮', 260, 280, '初木', 1, 0, '天蓝色', '大师设计', '日式风格', '现代', 1),
+ ('00002', '电脑桌', '办公桌', 168, 200, '铜师傅', 1, 0, '灰色', '自由设计', '清新风格', '现代', 2),
+ ('00003', '柔软沙发', '实木', 365, 370, '好家居业', 1, 0, '黑色', '大师设计', '韩式风格', '现代', 3),
+ ('00004', '电脑椅', '真皮', 345, 360, '亿家达', 1, 0, '灰色', '大师设计', '日式风格', '现代', 4)
+-- 资讯分类表
+create table zxtype(
+ zxid int auto_increment primary key,
+ zxName varchar(20)not null 
+)
+insert into zxtype(zxName)
+values('行业新闻'),('家具百科'),('公司新闻')
+-- 资讯信息表
+create table zxxinxi(
+	zxbh int auto_increment primary key,
+	zxdate varchar(20)not null,
+	zxwenti varchar(200),
+	zxjieshi varchar(200),
+	zid int not null,
+	FOREIGN KEY(zid) REFERENCES zxtype(zxid)
+)
+insert into zxxinxi(zxdate,zxwenti,zxjieshi,zid)
+values('2019/04','家具有哪些类型?','按家具从风格上可以分为：现代家具、欧式古典家具、美式家具、中式古典家具（也就是红木家具），还有近两年比较流行的新古典系列家具等等.',2)
+-- 公司信息表
+create table gsxinxi(
+ gsName VARCHAR(20),
+ gsjieshao VARCHAR(500),
+ gsdianhua VARCHAR(20),
+ gsEmail VARCHAR(50),
+ gsdizhi VARCHAR(50)
+)
+INSERT INTO gsxinxi(gsName,gsjieshao,gsdianhua,gsEmail,gsdizhi)
+VALUES('某某家居设计公司','FURNITUREDESGIN是一家拥有丰富的经验的家具设计公司。所设计的家具销往全国各地。设计的实践，
+在于为生活提供更舒适的环境及精确负责的施工，我们具有非常专业的团队，为客户创造符合装修风格的贴心家具。满足客户的要求与喜好，
+甚至将梦想中的生活氛围透过专业的感知力呈现，将家具透过色彩以及最和谐的比例设计而成。公司凭借高素质的人才队伍，先进的工艺和完善的企业管理，
+赢得了国内外客户的良好赞誉。','0714-8868331','123@dayeyunalading.com ','湖北省XXX市XXX大道小区B栋201 ')
+-- 设计师信息表
+CREATE TABLE sjsxinxi(
+	sjsId int auto_increment PRIMARY KEY,
+	sjsName VARCHAR(20) not null,
+	sjschenghao VARCHAR(20)NOT NULL
+)
+INSERT INTO sjsxinxi(sjsName,sjschenghao)
+VALUES('史密斯KIM','金牌设计师'),('刘凯丽','金牌设计师'),('小李子','金牌设计师'),('LISA','金牌设计师')
+
+-- 留言表
+CREATE TABLE liuyan(
+	liuyanId int auto_increment PRIMARY KEY,
+	xingming varchar(20)not null,
+	dianhua char(11)not null,
+	youxiang varchar(20)not null,
+	neirong varchar(50)
+)
+-- 后台用户
+CREATE TABLE user(
+	id INT PRIMARY KEY auto_increment,
+	username VARCHAR(20),
+	password VARCHAR(20),
+	email VARCHAR(20)
+)
+INSERT INTO user(username,password,email)
+VALUES("xinlong9910","xinlong9910","2032635648@qq.com"),("zhangxiaowei","123123","1232123@qq.com"),("lirenwen","123123","q1231@qq.com"),("yeleiyu","123123","1231231@qq.com")
